@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:18
+    environment:
+      TZ: Asia/Tokyo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: posty_development
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
+  web:
+    build:
+      context: .
+      args:
+        UID: 1000
+        GID: 1000
+    command: bin/rails server -b 0.0.0.0
+    volumes:
+      - .:/app
+      - bundle_data:/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      TZ: Asia/Tokyo
+      DATABASE_HOST: db
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: password
+
+volumes:
+  postgres_data:
+  bundle_data:
