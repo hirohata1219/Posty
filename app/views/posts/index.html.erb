@@ -1,2 +1,27 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="col-md-6 mx-auto py-5">
+  <h1 class="text-center fw-bold my-5">
+    <%= t('.title') %>
+  </h1>
+  <% @posts.each do |post| %>
+    <article class="card p-5 mb-5">
+      <div class="card-body">
+        <h2 class="mb-3">
+          <%= link_to post.title, post_path(post), class: "text-decoration-none" %>
+        </h2>
+        <p class="mb-3 text-muted">
+          <%= t('defaults.poster') %>: <%= post.user.name %>
+        </p>
+        <div class="mb-3">
+          <%= truncate(post.body, length: 20) %>
+        </div>
+        <% if current_user == post.user %>
+          <div class="d-flex gap-3">
+            <%= link_to t('defaults.edit'), edit_post_path(post), class: "btn btn-outline-warning btn-sm" %>
+            <%= button_to t('defaults.delete'), post_path(post), class: "btn btn-outline-danger btn-sm",
+                method: :delete, data: { turbo_confirm: t('defaults.delete_confirm') } %>
+          </div>
+        <% end %>
+      </div>
+    </article>
+  <% end %>
+</div>
