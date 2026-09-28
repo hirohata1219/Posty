@@ -24,11 +24,11 @@ WORKDIR /app
 # BundlerのGem保存先
 ENV BUNDLE_PATH=/bundle
 
-# Gem保存先のディレクトリ
+# Gem保存先を作成
 RUN mkdir -p /bundle && \
     chown -R appuser:appgroup /bundle
 
-# appuserで実行
+# 以降はappuserで実行
 USER appuser
 
 EXPOSE 3000
