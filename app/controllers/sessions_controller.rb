@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])&.authenticate(params[:password])
     if user
       session[:user_id] = user.id
-      redirect_to root_path, success: t('.success')
+      redirect_to root_path, success: t(".success")
     else
       flash.now[:danger] = t(".failure")
       render :new, status: :unprocessable_entity
@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to login_path, status: :see_other, success: t('.success')
+    redirect_to login_path, status: :see_other, success: t(".success")
   end
 end
