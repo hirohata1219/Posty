@@ -1,0 +1,184 @@
+ja:
+  helpers:
+    submit:
+      create: "登録する"
+      update: "更新する"
+      submit: "保存する"
+      post:
+        create: "投稿する"
+
+  defaults:
+    post: "投稿"
+    poster: "投稿者"
+    search_word: "検索ワード"
+    edit: "編集"
+    delete: "削除"
+    delete_confirm: "削除しますか？"
+    password_reset: "パスワードリセット"
+
+    email_placeholder: "（例）taro@example.com"
+    password_placeholder: "3文字以上で入力してください"
+
+    flash_message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成できませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新できませんでした"
+      deleted: "%{item}を削除しました"
+
+    require_login: "ログインしてください"
+
+  header:
+    login: "ログイン"
+    logout: "ログアウト"
+    register: "新規登録"
+    post: "投稿"
+    post_index: "投稿一覧"
+    create_post: "新規投稿"
+    bookmark_index: "ブックマーク一覧"
+    profile: "マイページ"
+
+  sessions:
+    new:
+      title: "ログイン"
+      login: "ログイン"
+      to_register_page: "新規登録ページへ"
+      password_forget: "パスワードをお忘れの方はこちら"
+    create:
+      success: "ログインしました"
+      failure: "メールアドレスまたはパスワードが間違っています"
+      locked: "ログイン試行回数が上限に達したため、アカウントを一時的にロックしています。%{remaining_minutes}分後に再度お試しください。"
+    destroy:
+      success: "ログアウトしました"
+
+  users:
+    new:
+      title: "ユーザー登録"
+      to_login_page: "ログインページへ"
+      name_placeholder: "（例）山田太郎"
+      password_confirmation_placeholder: "上記パスワードを再入力してください"
+
+    create:
+      success: "ユーザー登録が完了しました"
+      failure: "ユーザー登録に失敗しました"
+
+    update:
+      success: "更新が完了しました"
+      failure: "更新に失敗しました"
+
+    destroy:
+      success: "削除が完了しました"
+
+  posts:
+    new:
+      title: "新規投稿"
+      back_to_index: "投稿一覧に戻る"
+
+    show:
+      title: "投稿詳細"
+      created_at: "投稿日"
+      comment: "コメント"
+      comment_submit: "コメントする"
+      comments: "コメント"
+      no_comments: "まだコメントがありません"
+      comment_count: "コメント数"
+      like_count: "いいね数"
+      liked: "♥ いいね済み"
+      like: "♡ いいね"
+      back_to_index: "投稿一覧に戻る"
+      comment_delete_confirm: "コメントを削除しますか？"
+
+    index:
+      title: "投稿一覧"
+      create: "投稿する"
+      no_result: "まだ投稿がありません"
+
+    edit:
+      title: "投稿編集"
+      back_to_show: "投稿詳細に戻る"
+
+    form:
+      title_placeholder: "タイトル"
+      body_placeholder: "本文"
+      ai_improve: "🤖 AIで文章を改善"
+
+  profiles:
+    edit:
+      ai_improve: "🤖 AIで文章を改善"
+
+  views:
+    pagination:
+      first: "最初"
+      last: "最後"
+      previous: "前へ"
+      next: "次へ"
+
+  comments:
+    create:
+      success: "コメントしました。"
+
+  likes:
+    create:
+      success: "いいねしました。"
+      failure: "すでにいいねしています。"
+    destroy:
+      success: "いいねを取り消しました。"
+
+  bookmarks:
+    title: "ブックマーク一覧"
+    no_result: "ブックマーク中の投稿がありません。"
+    create:
+      success: "ブックマークしました"
+    destroy:
+      success: "ブックマークを外しました"
+
+  password_resets:
+    new:
+      title: "パスワードリセット申請"
+      submit: "送信"
+    edit:
+      title: "パスワードリセット"
+    create:
+      success: "パスワードリセット手順を送信しました"
+    update:
+      success: "パスワードを変更しました"
+
+  activerecord:
+    attributes:
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        age: "年齢"
+        phone_number: "電話番号"
+        bio: "自己紹介"
+        avatar: "プロフィール画像"
+
+      post:
+        title: "タイトル"
+        body: "本文"
+
+      comment:
+        body: "コメント"
+
+    errors:
+      messages:
+        blank: "を入力してください"
+        required: "を入力してください"
+        too_short: "%{count}文字以上で入力してください"
+        too_long: "%{count}文字以内で入力してください"
+        taken: "はすでに使用されています"
+        invalid: "は不正な値です"
+        not_a_number: "は数値で入力してください"
+
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "パスワードとパスワード確認が一致しません"
+
+    models:
+      user: "ユーザー"
+      post: "投稿"
+      comment: "コメント"
