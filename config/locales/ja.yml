@@ -8,6 +8,8 @@ ja:
         create: "投稿する"
 
   defaults:
+    email: "メールアドレス"
+    password: "パスワード"
     post: "投稿"
     poster: "投稿者"
     search_word: "検索ワード"
