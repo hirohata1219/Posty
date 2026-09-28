@@ -62,6 +62,9 @@ ja:
       success: "ユーザー登録が完了しました"
       failure: "ユーザー登録に失敗しました"
 
+    show:
+      title: "プロフィール"
+
     update:
       success: "更新が完了しました"
       failure: "更新に失敗しました"
