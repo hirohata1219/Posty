@@ -8,3 +8,8 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+@media screen and (max-width: 990px) {
+  .phone {
+    width: 100%;
+  }
+}

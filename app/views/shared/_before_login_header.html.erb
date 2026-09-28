@@ -1,0 +1,14 @@
+<header class="border-bottom bg-white py-4">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <%= link_to "Posty", post_path, class: "navbar-brand fw-bold" %>
+
+      <div class="ms-auto d-flex gap-2">
+
+        <%= link_to t('header.login'), login_path, class: "btn btn-outline-warning" %>
+        <%= link_to t('header.register'), new_user_path, class: "btn btn-outline-primary" %>
+
+      </div>
+    </div>
+  </nav>
+</header>
