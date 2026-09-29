@@ -22,6 +22,7 @@ class PostsController < ApplicationController
     @post = Post.includes(:user).find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
+    @liked = logged_in? && @post.likes.exists?(user: current_user)
   end
 
   def edit
