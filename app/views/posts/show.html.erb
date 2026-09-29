@@ -29,6 +29,18 @@
 
 
 
+  <%# いいね機能 %>
+
+  <div class="mb-5">
+    <% if @liked %>
+      <%= button_to t(".liked"), post_like_path(@post), method: :delete, class: "btn btn-danger" %>
+    <% else %>
+      <%= button_to t(".like"), post_like_path(@post), method: :post, class: "btn btn-outline-danger" %>
+    <% end %>
+  </div>
+
+
+
   <%# コメント機能 %>
 
   <%= render "shared/error_messages", object: @comment %>
