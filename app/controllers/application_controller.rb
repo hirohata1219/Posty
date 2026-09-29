@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :current_user
   before_action :require_login
 
+  include Pagy::Method
+
   private
 
   def logged_in?
