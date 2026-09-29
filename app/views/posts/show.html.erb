@@ -31,12 +31,16 @@
 
   <%# いいね機能 %>
 
-  <div class="mb-5">
+  <div class="mb-3">
     <% if @liked %>
       <%= button_to t(".liked"), post_like_path(@post), method: :delete, class: "btn btn-danger" %>
     <% else %>
       <%= button_to t(".like"), post_like_path(@post), method: :post, class: "btn btn-outline-danger" %>
     <% end %>
+  </div>
+
+  <div class="mb-5">
+    <%= t('.like_count') %>: (<%= @post.likes.count %>)
   </div>
 
 
@@ -54,6 +58,10 @@
       <%= f.submit class: "btn btn-primary w-100" %>
     </div>
   <% end %>
+
+  <div class="mb-3">
+    <%= t('.comment_count') %>: (<%= @post.comments.count %>)
+  </div>
 
   <% if @comments.any? %>
     <% @comments.each do |comment| %>
