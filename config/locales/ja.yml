@@ -6,6 +6,8 @@ ja:
       submit: "保存する"
       post:
         create: "投稿する"
+      comment:
+        create: "コメントする"
 
   defaults:
     email: "メールアドレス"
@@ -82,16 +84,13 @@ ja:
     show:
       title: "投稿詳細"
       created_at: "投稿日"
-      comment: "コメント"
-      comment_submit: "コメントする"
-      comments: "コメント"
       no_comments: "まだコメントがありません"
-      comment_count: "コメント数"
-      like_count: "いいね数"
+      comment_delete_confirm: "コメントを削除しますか？"
+      back_to_index: "投稿一覧に戻る"
       liked: "♥ いいね済み"
       like: "♡ いいね"
-      back_to_index: "投稿一覧に戻る"
-      comment_delete_confirm: "コメントを削除しますか？"
+      comment_count: "コメント数"
+      like_count: "いいね数"
 
     index:
       title: "投稿一覧"

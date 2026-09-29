@@ -11,15 +11,17 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to @post, success: t('defaults.flash_message.created', item: Post.model_name.human)
+      redirect_to @post, success: t("defaults.flash_message.created", item: Post.model_name.human)
     else
-      flash.now[:danger] = t('defaults.flash_message.not_created', item: Post.model_name.human)
+      flash.now[:danger] = t("defaults.flash_message.not_created", item: Post.model_name.human)
       render :new, status: :unprocessable_entity
     end
   end
 
   def show
     @post = Post.includes(:user).find(params[:id])
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user).order(created_at: :desc)
   end
 
   def edit
@@ -27,22 +29,22 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, success: t('defaults.flash_message.updated', item: Post.model_name.human)
+      redirect_to @post, success: t("defaults.flash_message.updated", item: Post.model_name.human)
     else
-      flash.now[:danger] = t('defaults.flash_message.not_updated', item: Post.model_name.human)
+      flash.now[:danger] = t("defaults.flash_message.not_updated", item: Post.model_name.human)
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_path, status: :see_other, success: t('defaults.flash_message.deleted', item: Post.model_name.human)
+    redirect_to posts_path, status: :see_other, success: t("defaults.flash_message.deleted", item: Post.model_name.human)
   end
 
   private
 
   def post_params
-    params.expect(post: [:title, :body])
+    params.expect(post: [ :title, :body ])
   end
 
   def set_post
