@@ -1,18 +1,19 @@
 <%= render "shared/error_messages", object: @post %>
 
   <%= form_with model: @post do |f| %>
+    <div class="p-3">
+      <div class="mb-3">
+        <%= f.label :title, class: "form-label" %>
+        <%= f.text_field :title, placeholder: t('.title_placeholder'), class: "form-control" %>
+      </div>
+      <div class="mb-5">
+        <%= f.label :body, class: "form-label" %>
+        <%= f.text_area :body, placeholder: t('.body_placeholder'), class: "form-control" %>
+      </div>
+      
+      <div class="mb-4">
+        <%= f.submit class: "btn btn-primary w-100" %>
+      </div>
+    </div>
 
-    <div class="mb-3">
-      <%= f.label :title, class: "form-label" %>
-      <%= f.text_field :title, placeholder: t('.title_placeholder'), class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :body, class: "form-label" %>
-      <%= f.text_area :body, placeholder: t('defaults.body_placeholder'), class: "form-control" %>
-    </div>
-    
-    <div class="mb-3">
-      <%= f.submit class: "btn btn-primary w-100" %>
-    </div>
-    
   <% end %>

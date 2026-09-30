@@ -1,24 +1,26 @@
 <div class="col-md-5 mx-auto py-5">
-  <h1 class="text-center fw-bold mb-4">
-    <%= t('.title') %>
-  </h1>
+  <div class="container">
+    <h1 class="text-center fw-bold mb-4">
+      <%= t('.title') %>
+    </h1>
 
-  <%= form_with url: login_path do |f| %>
+    <%= form_with url: login_path do |f| %>
 
-    <div class="mb-3">
-      <%= f.label :email, t('defaults.email'), class: "form-label" %>
-      <%= f.email_field :email, placeholder: t('defaults.email_placeholder'), class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :password, t('defaults.password'), class: "form-label" %>
-      <%= f.password_field :password, placeholder: t('defaults.password_placeholder'), class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= f.submit t('.login'), class: "btn btn-primary w-100" %>
-    </div>
-    <div class="mb-3 text-center">
-      <%= link_to t('.to_register_page'), new_user_path %>
-    </div>
+      <div class="mb-3">
+        <%= f.label :email, t('defaults.email'), class: "form-label" %>
+        <%= f.email_field :email, placeholder: t('defaults.email_placeholder'), class: "form-control" %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :password, t('defaults.password'), class: "form-label" %>
+        <%= f.password_field :password, placeholder: t('defaults.password_placeholder'), class: "form-control" %>
+      </div>
+      <div class="mb-5">
+        <%= f.submit t('.login'), class: "btn btn-primary w-100" %>
+      </div>
+      <div class="mb-3 text-center">
+        <%= link_to t('.to_register_page'), new_user_path %>
+      </div>
 
-  <% end %>
+    <% end %>
+  </div>
 </div>
