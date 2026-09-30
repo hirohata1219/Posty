@@ -1,94 +1,99 @@
-<div class="col-md-6 mx-auto py-5">
+<div class="col-md-6 mx-auto">
   <h1 class="text-center fw-bold my-5">
       <%= t('.title') %>
   </h1>
-  
-  <article class="card p-5 mb-5">
-    <div class="card-body">
-      <h2 class="mb-3">
-        <%= @post.title %>
-      </h2>
-      <p class="mb-3 text-muted">
-        <%= t('defaults.poster') %>: <%= @post.user.name %>
-      </p>
-      <p class="mb-3 text-muted">
-        <%= t('.created_at') %>: <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
-      </p>
-      <div class="mb-3">
-        <%= simple_format(@post.body) %>
-      </div>
-      <% if current_user == @post.user %>
-        <div class="d-flex gap-3">
-          <%= link_to t('defaults.edit'), edit_post_path(@post), class: "btn btn-outline-warning btn-sm" %>
-          <%= button_to t('defaults.delete'), post_path(@post), class: "btn btn-outline-danger btn-sm",
-              method: :delete, data: { turbo_confirm: t('defaults.delete_confirm') } %>
-        </div>
-      <% end %>
-    </div>
-  </article>
-
-
-
-  <%# いいね機能 %>
-
-  <div class="mb-3">
-    <% if @liked %>
-      <%= button_to t(".liked"), post_like_path(@post), method: :delete, class: "btn btn-danger" %>
-    <% else %>
-      <%= button_to t(".like"), post_like_path(@post), method: :post, class: "btn btn-outline-danger" %>
-    <% end %>
-  </div>
-
-  <div class="mb-5">
-    <%= t('.like_count') %>: (<%= @post.likes.count %>)
-  </div>
-
-
-
-  <%# コメント機能 %>
-
-  <%= render "shared/error_messages", object: @comment %>
-
-  <%= form_with model: [@post, @comment] do |f| %>
-    <div class="mb-3">
-      <%= f.label :body, class: "form-label" %>
-      <%= f.text_area :body, rows: 3, required: true, class: "form-control" %>
-    </div>
-    <div class="mb-5">
-      <%= f.submit class: "btn btn-primary w-100" %>
-    </div>
-  <% end %>
-
-  <div class="mb-3">
-    <%= t('.comment_count') %>: (<%= @post.comments.count %>)
-  </div>
-
-  <% if @comments.any? %>
-    <% @comments.each do |comment| %>
-      <div class="border rounded p-3">
-        <div class="mb-3">
-          <%= comment.user.name %>
-        </div>
-        <div class="mb-3">
-          <%= simple_format(comment.body) %>
-        </div>
-        <p class="text-muted">
-          <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+  <div class="container">
+    <article class="card p-3 mb-4">
+      <div class="card-body">
+        <h2 class="mb-3">
+          <%= @post.title %>
+        </h2>
+        <p class="mb-3 text-muted">
+          <%= t('defaults.poster') %>: <%= @post.user.name %>
         </p>
-        <% if comment.user == current_user %>
-          <%= button_to t('defaults.delete'), post_comment_path(@post, comment),
-             method: :delete, data: { turbo_confirm: t('.comment_delete_confirm')},
-             class: "btn btn-outline-danger btn-sm" %>
+        <p class="mb-3 text-muted">
+          <%= t('.created_at') %>: <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
+        </p>
+        <div class="mb-3">
+          <%= simple_format(@post.body) %>
+        </div>
+        <% if current_user == @post.user %>
+          <div class="d-flex gap-3">
+            <%= link_to t('defaults.edit'), edit_post_path(@post), class: "btn btn-outline-warning btn-sm" %>
+            <%= button_to t('defaults.delete'), post_path(@post), class: "btn btn-outline-danger btn-sm",
+                method: :delete, data: { turbo_confirm: t('defaults.delete_confirm') } %>
+          </div>
         <% end %>
       </div>
-    <% end %>
-  <% else %>
-    <p class="mb-3">
-      <%= t(".no_comments") %>
-    </p>
-  <% end %>
+    </article>
 
-  <p class="text-center">
-    <%= link_to t('.back_to_index'), posts_path %>
-  </p>
+
+
+    <%# いいね機能 %>
+
+    <div class="mb-3">
+      <% if @liked %>
+        <%= button_to t(".liked"), post_like_path(@post), method: :delete, class: "btn btn-danger" %>
+      <% else %>
+        <%= button_to t(".like"), post_like_path(@post), method: :post, class: "btn btn-outline-danger" %>
+      <% end %>
+    </div>
+
+    <div class="mb-4 text-muted">
+      <%= t('.like_count') %>: (<%= @post.likes.count %>)
+    </div>
+
+
+
+    <%# コメント機能 %>
+
+    <%= render "shared/error_messages", object: @comment %>
+
+    <%= form_with model: [@post, @comment] do |f| %>
+      <div class="mb-3">
+        <%= f.label :body, class: "form-label" %>
+        <%= f.text_area :body, rows: 2, required: true, class: "form-control" %>
+      </div>
+      <div class="mb-5">
+        <%= f.submit class: "btn btn-primary w-100" %>
+      </div>
+    <% end %>
+
+    <div class="mb-3 text-muted">
+      <%= t('.comment_count') %>: (<%= @post.comments.count %>)
+    </div>
+
+    <% if @comments.any? %>
+      <% @comments.each do |comment| %>
+        <div class="border rounded my-3 p-3">
+
+          <div class="d-flex justify-content-between">
+            <p class="mb-3">
+              <%= comment.user.name %>
+            </p>
+            <p class="text-muted">
+              <%= time_ago_in_words(@post.created_at) %>
+            </p>
+          </div>
+
+          <div class="mb-3">
+            <%= simple_format(comment.body) %>
+          </div>
+          <% if comment.user == current_user %>
+            <%= button_to t('defaults.delete'), post_comment_path(@post, comment),
+              method: :delete, data: { turbo_confirm: t('.comment_delete_confirm')},
+              class: "btn btn-outline-danger btn-sm" %>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="mb-3">
+        <%= t(".no_comments") %>
+      </p>
+    <% end %>
+
+    <p class="text-center py-5">
+      <%= link_to t('.back_to_index'), posts_path %>
+    </p>
+  </div>
 </div>
