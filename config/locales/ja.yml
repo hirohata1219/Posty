@@ -19,10 +19,9 @@ ja:
     delete: "削除"
     delete_confirm: "削除しますか？"
     password_reset: "パスワードリセット"
-
     email_placeholder: "（例）taro@example.com"
     password_placeholder: "3文字以上で入力してください"
-
+    require_login: "ログインしてください"
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
@@ -30,7 +29,6 @@ ja:
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
 
-    require_login: "ログインしてください"
 
   header:
     login: "ログイン"
@@ -41,6 +39,24 @@ ja:
     create_post: "新規投稿"
     bookmark_index: "ブックマーク一覧"
     profile: "マイページ"
+
+
+  users:
+    new:
+      title: "ユーザー登録"
+      to_login_page: "ログインページへ"
+      name_placeholder: "（例）山田太郎"
+      password_confirmation_placeholder: "上記パスワードを再入力してください"
+    create:
+      success: "ユーザー登録が完了しました"
+      failure: "ユーザー登録に失敗しました"
+    show:
+      title: "プロフィール"
+    update:
+      success: "更新が完了しました"
+      failure: "更新に失敗しました"
+    destroy:
+      success: "削除が完了しました"
 
   sessions:
     new:
@@ -55,32 +71,14 @@ ja:
     destroy:
       success: "ログアウトしました"
 
-  users:
-    new:
-      title: "ユーザー登録"
-      to_login_page: "ログインページへ"
-      name_placeholder: "（例）山田太郎"
-      password_confirmation_placeholder: "上記パスワードを再入力してください"
-
-    create:
-      success: "ユーザー登録が完了しました"
-      failure: "ユーザー登録に失敗しました"
-
-    show:
-      title: "プロフィール"
-
-    update:
-      success: "更新が完了しました"
-      failure: "更新に失敗しました"
-
-    destroy:
-      success: "削除が完了しました"
-
   posts:
+    index:
+      title: "投稿一覧"
+      create: "投稿する"
+      no_result: "まだ投稿がありません"
     new:
       title: "新規投稿"
       back_to_index: "投稿一覧に戻る"
-
     show:
       title: "投稿詳細"
       created_at: "投稿日"
@@ -91,31 +89,40 @@ ja:
       like: "♡ いいね"
       comment_count: "コメント数"
       like_count: "いいね数"
-
-    index:
-      title: "投稿一覧"
-      create: "投稿する"
-      no_result: "まだ投稿がありません"
-
     edit:
       title: "投稿編集"
       back_to_show: "投稿詳細に戻る"
-
     form:
       title_placeholder: "タイトル"
       body_placeholder: "本文"
       ai_improve: "🤖 AIで文章を改善"
 
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: "1秒未満"
+      x_seconds:
+        one: "1秒前"
+        other: "%{count}秒前"
+      x_minutes:
+        one: "1分前"
+        other: "%{count}分前"
+      about_x_hours:
+        one: "1時間前"
+        other: "%{count}時間前"
+      x_days:
+        one: "1日前"
+        other: "%{count}日前"
+      about_x_months:
+        one: "1か月前"
+        other: "%{count}か月前"
+      about_x_years:
+        one: "1年前"
+        other: "%{count}年前"
+
   profiles:
     edit:
       ai_improve: "🤖 AIで文章を改善"
-
-  views:
-    pagination:
-      first: "最初"
-      last: "最後"
-      previous: "前へ"
-      next: "次へ"
 
   comments:
     create:
@@ -128,14 +135,6 @@ ja:
     destroy:
       success: "いいねを取り消しました。"
 
-  bookmarks:
-    title: "ブックマーク一覧"
-    no_result: "ブックマーク中の投稿がありません。"
-    create:
-      success: "ブックマークしました"
-    destroy:
-      success: "ブックマークを外しました"
-
   password_resets:
     new:
       title: "パスワードリセット申請"
@@ -147,22 +146,20 @@ ja:
     update:
       success: "パスワードを変更しました"
 
+
   activerecord:
+
     attributes:
       user:
         name: "名前"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード確認"
-        age: "年齢"
-        phone_number: "電話番号"
         bio: "自己紹介"
         avatar: "プロフィール画像"
-
       post:
         title: "タイトル"
         body: "本文"
-
       comment:
         body: "コメント"
 
@@ -171,11 +168,9 @@ ja:
         blank: "を入力してください"
         required: "を入力してください"
         too_short: "%{count}文字以上で入力してください"
-        too_long: "%{count}文字以内で入力してください"
         taken: "はすでに使用されています"
         invalid: "は不正な値です"
-        not_a_number: "は数値で入力してください"
-
+        not_number: "は数値で入力してください"
       models:
         user:
           attributes:
