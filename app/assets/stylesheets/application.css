@@ -32,6 +32,10 @@
   cursor: pointer;
 }
 
+
+.bottom-nav {
+  display: none;
+}
 @media (max-width: 768px) {
   .bottom-nav {
     position: fixed;
