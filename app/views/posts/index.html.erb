@@ -6,10 +6,15 @@
     <% @posts.each do |post| %>
       <article class="card p-3 m-3">
         <div class="card-body">
-          <h2 class="mb-3">
-            <%= link_to post.title, post_path(post), class: "text-decoration-none" %>
-          </h2>
-          <p class="mb-3 text-muted">
+          <div class="d-flex justify-content-between">
+            <h2 class="mb-3">
+              <%= link_to post.title, post_path(post), class: "text-decoration-none" %>
+            </h2>
+            <div class="text-muted small">
+              <%= time_ago_in_words(post.created_at) %>
+            </div>
+          </div>
+          <p class="mb-3 text-muted small">
             <%= t('defaults.poster') %>: <%= post.user.name %>
           </p>
           <div class="mb-3">

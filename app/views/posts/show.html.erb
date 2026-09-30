@@ -2,6 +2,7 @@
   <h1 class="text-center fw-bold my-5">
       <%= t('.title') %>
   </h1>
+<<<<<<< Updated upstream
   
   <article class="card p-5 mb-5">
     <div class="card-body">
@@ -22,6 +23,24 @@
           <%= link_to t('defaults.edit'), edit_post_path(@post), class: "btn btn-outline-warning btn-sm" %>
           <%= button_to t('defaults.delete'), post_path(@post), class: "btn btn-outline-danger btn-sm",
               method: :delete, data: { turbo_confirm: t('defaults.delete_confirm') } %>
+=======
+  <div class="container">
+    <article class="card p-3 mb-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <h2>
+            <%= link_to @post.title, post_path(@post), class: "text-decoration-none" %>
+          </h2>
+          <div class="text-muted small">
+            <%= @post.created_at.strftime("%Y/%m/%d") %>
+          </div>
+        </div>
+        <p class="mb-3 text-muted small">
+          <%= t('defaults.poster') %>: <%= @post.user.name %>
+        </p>
+        <div class="mb-4">
+          <%= simple_format(@post.body) %>
+>>>>>>> Stashed changes
         </div>
       <% end %>
     </div>
