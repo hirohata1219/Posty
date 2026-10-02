@@ -13,7 +13,7 @@ class Post < ApplicationRecord
     keywords.reduce(all) do |posts, keyword|
       keyword = "%#{sanitize_sql_like(keyword)}%"
       posts.where(
-        "title ILIKE :keyword OR body ILIKE :keyword"
+        "title ILIKE :keyword OR body ILIKE :keyword",
         keyword: keyword
       )
     end
