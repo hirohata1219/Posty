@@ -4,6 +4,11 @@ class PostsController < ApplicationController
     @pagy, @posts = pagy(:offset, Post.includes(:user).order(created_at: :desc), limit: 10)
   end
 
+  def search
+    @query = params[:q].to_s.strip
+    @pagy, @posts = pagy(:offset, Post.includes(:user).search_by_keyword(@query).order(created_at: :desc), limit: 10)
+  end
+
   def new
     @post = current_user.posts.build
   end
@@ -45,7 +50,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.expect(post: [ :title, :body ])
+    params.expect(post: [ :title, :body, :image ])
   end
 
   def set_post
