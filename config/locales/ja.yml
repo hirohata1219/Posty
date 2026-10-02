@@ -76,6 +76,8 @@ ja:
       title: "投稿一覧"
       create: "投稿する"
       no_result: "まだ投稿がありません"
+      search_placeholder: "投稿を検索"
+      search: "検索"
     new:
       title: "新規投稿"
       back_to_index: "投稿一覧に戻る"
@@ -96,6 +98,13 @@ ja:
       title_placeholder: "タイトル"
       body_placeholder: "本文"
       ai_improve: "🤖 AIで文章を改善"
+    search:
+      title: "検索結果"
+      blank: "検索キーワードを入力してください。"
+      empty: "「%{query}」に一致する投稿はありません。"
+      search_result: "「%{query}」の検索結果"
+      search_placeholder: "投稿を検索"
+      search: "検索"
 
   datetime:
     distance_in_words:
