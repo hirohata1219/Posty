@@ -2,43 +2,51 @@
   <h1 class="text-center fw-bold my-5">
     <%= t('.title') %>
   </h1>
-  <% if @posts.any? %>
-    <% @posts.each do |post| %>
-      <article class="card p-3 m-3">
-        <div class="card-body">
-          <div class="d-flex justify-content-between">
-            <h2 class="mb-3">
-              <%= link_to post.title, post_path(post), class: "text-decoration-none" %>
-            </h2>
-            <div class="text-muted small">
-              <%= time_ago_in_words(post.created_at) %>
+  <div class="container">
+    <% if @posts.any? %>
+      <div class="container pb-3">
+        <%= form_with url: search_posts_path, method: :get, local: true, class: "d-flex" do |f| %>
+          <%= f.search_field :q, value: @query, class: "form-control me-2", placeholder: t('.search_placeholder') %>
+          <%= f.submit t('.search'), class: "btn btn-outline-primary" %>
+        <% end %>
+      </div>
+      <% @posts.each do |post| %>
+        <article class="card p-3 my-3">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h2 class="mb-3">
+                <%= link_to post.title, post_path(post), class: "text-decoration-none" %>
+              </h2>
+              <div class="text-muted small">
+                <%= time_ago_in_words(post.created_at) %>
+              </div>
             </div>
-          </div>
-          <p class="mb-3 text-muted small">
-            <%= t('defaults.poster') %>: <%= post.user.name %>
-          </p>
-          <div class="mb-3">
-            <%= truncate(post.body, length: 20) %>
-          </div>
-          <% if current_user == post.user %>
-            <div class="d-flex gap-3">
-              <%= link_to t('defaults.edit'), edit_post_path(post), class: "btn btn-outline-warning btn-sm" %>
-              <%= button_to t('defaults.delete'), post_path(post), class: "btn btn-outline-danger btn-sm",
-                  method: :delete, data: { turbo_confirm: t('defaults.delete_confirm') } %>
+            <p class="mb-3 text-muted small">
+              <%= t('defaults.poster') %>: <%= post.user.name %>
+            </p>
+            <div class="mb-4">
+              <%= truncate(post.body, length: 20) %>
             </div>
-          <% end %>
-        </div>
-      </article>
+            <% if current_user == post.user %>
+              <div class="d-flex gap-3">
+                <%= link_to t('defaults.edit'), edit_post_path(post), class: "btn btn-outline-warning btn-sm" %>
+                <%= button_to t('defaults.delete'), post_path(post), class: "btn btn-outline-danger btn-sm",
+                    method: :delete, data: { turbo_confirm: t('defaults.delete_confirm') } %>
+              </div>
+            <% end %>
+          </div>
+        </article>
+      <% end %>
+
+      <div class="mb-3 py-md-4">
+        <%== @pagy.series_nav %>
+      </div>
+
+    <% else %>
+      <p class="mb-3">
+        <%= t(".no_result") %>
+      </p>
     <% end %>
 
-    <div class="mb-3 py-md-4">
-      <%== @pagy.series_nav %>
-    </div>
-
-  <% else %>
-    <p class="mb-3">
-      <%= t(".no_result") %>
-    </p>
-  <% end %>
-
+  </div>
 </div>
