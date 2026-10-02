@@ -95,8 +95,6 @@ ja:
       title: "投稿編集"
       back_to_show: "投稿詳細に戻る"
     form:
-      title_placeholder: "タイトル"
-      body_placeholder: "本文"
       ai_improve: "🤖 AIで文章を改善"
     search:
       title: "検索結果"
@@ -105,6 +103,7 @@ ja:
       search_result: "「%{query}」の検索結果"
       search_placeholder: "投稿を検索"
       search: "検索"
+      back_to_index: "投稿一覧に戻る"
 
   datetime:
     distance_in_words:
@@ -169,6 +168,7 @@ ja:
       post:
         title: "タイトル"
         body: "本文"
+        image: "画像"
       comment:
         body: "コメント"
 

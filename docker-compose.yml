@@ -21,6 +21,7 @@ services:
     volumes:
       - .:/app
       - bundle_data:/bundle
+      - storage_data:/app/storage
     ports:
       - "3000:3000"
     depends_on:
@@ -34,3 +35,4 @@ services:
 volumes:
   postgres_data:
   bundle_data:
+  storage_data:
