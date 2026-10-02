@@ -4,11 +4,11 @@
   </h1>
 
   <div class="container">
-    <article class="card p-1 mb-4">
+    <article class="card p-3 mb-4">
       <div class="card-body">
         <div class="d-flex justify-content-between">
           <h2>
-            <%= link_to @post.title, post_path(@post), class: "text-decoration-none" %>
+            <%= @post.title %>
           </h2>
           <div class="text-muted small">
             <%= @post.created_at.strftime("%Y/%m/%d") %>
@@ -20,7 +20,7 @@
     </p>
 
     <% if @post.image.attached? %>
-      <%= image_tag @post.image, class: "img-fluid rounded objecy-fit-contain mb-5" %>
+      <%= image_tag @post.image, class: "img-fluid rounded objecy-fit-contain mb-3" %>
     <% end %>
 
     <%= simple_format(@post.body, class: "mb-0") %>
@@ -56,7 +56,7 @@
 <%= form_with model: [@post, @comment] do |f| %>
   <div class="mb-3">
     <%= f.label :body, class: "form-label" %>
-    <%= f.text_area :body, rows: 2, required: true, class: "form-control" %>
+    <%= f.text_area :body, rows: 2, required: true, class: "form-control resize" %>
   </div>
 
   <div class="mb-5">
@@ -92,7 +92,7 @@
     </div>
   <% end %>
 <% else %>
-  <p class="mb-3">
+  <p class="pt-4 text-center">
     <%= t(".no_comments") %>
   </p>
 <% end %>
