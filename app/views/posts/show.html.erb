@@ -4,7 +4,7 @@
   </h1>
 
   <div class="container">
-    <article class="card p-3 mb-4">
+    <article class="card p-1 mb-4">
       <div class="card-body">
         <div class="d-flex justify-content-between">
           <h2>
@@ -19,12 +19,14 @@
       <%= t('defaults.poster') %>: <%= @post.user.name %>
     </p>
 
-    <div class="mb-4">
-      <%= simple_format(@post.body) %>
-    </div>
+    <% if @post.image.attached? %>
+      <%= image_tag @post.image, class: "img-fluid rounded objecy-fit-contain mb-5" %>
+    <% end %>
+
+    <%= simple_format(@post.body, class: "mb-0") %>
 
     <% if current_user == @post.user %>
-      <div class="d-flex gap-3">
+      <div class="d-flex gap-3 mt-4">
         <%= link_to t('defaults.edit'), edit_post_path(@post), class: "btn btn-outline-warning btn-sm" %>
         <%= button_to t('defaults.delete'), post_path(@post), class: "btn btn-outline-danger btn-sm",
             method: :delete, data: { turbo_confirm: t('defaults.delete_confirm') } %>
