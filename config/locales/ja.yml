@@ -128,10 +128,6 @@ ja:
         one: "1年前"
         other: "%{count}年前"
 
-  profiles:
-    edit:
-      ai_improve: "🤖 AIで文章を改善"
-
   comments:
     create:
       success: "コメントしました。"
@@ -142,6 +138,13 @@ ja:
       failure: "すでにいいねしています。"
     destroy:
       success: "いいねを取り消しました。"
+
+  profiles:
+    edit:
+      ai_improve: "🤖 AIで文章を改善"
+    update:
+      success: "プロフィールを更新しました。"
+      failure: "プロフィールの更新に失敗しました。"
 
   password_resets:
     new:

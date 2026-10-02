@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "profiles/show"
+  get "profiles/edit"
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "posts#index"
@@ -16,4 +18,6 @@ Rails.application.routes.draw do
       get :search
     end
   end
+
+  resource :profile, only: %i[show edit update]
 end
