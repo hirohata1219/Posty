@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, length: { minimum: 3 }, if: -> { new_record? || changes[:password_digest] }
+  validates :bio, length: { maximum: 200 }
 end
