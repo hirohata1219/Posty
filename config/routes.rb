@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "password_resets/new"
+  get "password_resets/edit"
   get "profiles/show"
   get "profiles/edit"
   get "up" => "rails/health#show", as: :rails_health_check

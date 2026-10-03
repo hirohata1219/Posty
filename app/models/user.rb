@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 3 }, if: -> { new_record? || changes[:password_digest] }
   validates :bio, length: { maximum: 200 }
 
-  generates_token_for :password_reset, expire_in: 1.hour do
+  generates_token_for :password_reset, expires_in: 1.hour do
     password_digest
   end
 end
