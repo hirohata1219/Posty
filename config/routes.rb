@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get "dashboard/index"
+  end
   get "password_resets/new"
   get "password_resets/edit"
   get "profiles/show"
@@ -27,4 +30,8 @@ Rails.application.routes.draw do
   post "password/reset", to: "password_resets#create", as: :password_reset
   get "password/reset/edit", to: "password_resets#edit", as: :edit_password_reset
   patch "password/reset", to: "password_resets#update"
+
+  namespace :admin do
+    root "dashboard#index"
+  end
 end

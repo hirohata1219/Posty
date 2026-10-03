@@ -14,4 +14,9 @@ class User < ApplicationRecord
   generates_token_for :password_reset, expires_in: 1.hour do
     password_digest
   end
+
+  enum :role, {
+    user: 0,
+    admin: 1
+  }
 end

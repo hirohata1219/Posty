@@ -29,4 +29,10 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to login_path, danger: t("defaults.require_login") unless logged_in?
   end
+
+  def require_admin
+    unless current_user&.admin?
+    redirect_to root_path, danger: t('.not_admin')
+    end
+  end
 end

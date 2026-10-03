@@ -172,6 +172,14 @@ ja:
   user_mailer:
       subject: "ユーザー登録が完了しました"
 
+  applicationController:
+    require_admin:
+      not_admin: "管理者権限が必要です。"
+
+  shared:
+    header:
+      admin_root: "管理画面"
+
 
   activerecord:
 
