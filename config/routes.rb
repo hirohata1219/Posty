@@ -20,4 +20,9 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: %i[show edit update]
+
+  get "password/reset", to: "password_resets#new", as: :new_password_reset
+  post "password/reset", to: "password_resets#create", as: :password_reset
+  get "password/reset/edit", to: "password_resets#edit", as: :edit_password_reset
+  patch "password/reset", to: "password_resets#update"
 end
