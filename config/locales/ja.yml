@@ -21,6 +21,7 @@ ja:
     password_reset: "パスワードリセット"
     email_placeholder: "（例）taro@example.com"
     password_placeholder: "3文字以上で入力してください"
+    password_confirmation_placeholder: "上記パスワードを再入力してください"
     require_login: "ログインしてください"
     flash_message:
       created: "%{item}を作成しました"
@@ -46,7 +47,6 @@ ja:
       title: "ユーザー登録"
       to_login_page: "ログインページへ"
       name_placeholder: "（例）山田太郎"
-      password_confirmation_placeholder: "上記パスワードを再入力してください"
     create:
       success: "ユーザー登録が完了しました"
       failure: "ユーザー登録に失敗しました"
@@ -128,10 +128,6 @@ ja:
         one: "1年前"
         other: "%{count}年前"
 
-  profiles:
-    edit:
-      ai_improve: "🤖 AIで文章を改善"
-
   comments:
     create:
       success: "コメントしました。"
@@ -142,6 +138,17 @@ ja:
       failure: "すでにいいねしています。"
     destroy:
       success: "いいねを取り消しました。"
+
+  profiles:
+    show:
+      title: "プロフィール"
+    edit:
+      title: "プロフィール編集"
+      back_to_profile: "プロフィールに戻る"
+      ai_improve: "🤖 AIで文章を改善"
+    update:
+      success: "プロフィールを更新しました。"
+      failure: "プロフィールの更新に失敗しました。"
 
   password_resets:
     new:

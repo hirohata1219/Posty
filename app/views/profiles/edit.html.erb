@@ -1,13 +1,12 @@
-<div class="col-md-5 mx-auto pt-5">
-  <div class="container">
-    <h1 class="text-center fw-bold mb-4">
-      <%= t('.title') %>
-    </h1>
+<div class="col-md-5 mx-auto py-5">
+  <h1 class="text-center fw-bold">
+    <%= t('.title') %>
+  </h1>
 
-    <%= render "shared/error_messages", object: @user %>
+  <%= render "shared/error_messages", object: @user %>
 
-    <%= form_with model: @user, url: users_path do |f| %>
-
+  <%= form_with model: @user, url: profile_path do |f| %>
+    <div class="p-3">
       <div class="mb-3">
         <%= f.label :name, class: "form-label" %>
         <%= f.text_field :name, placeholder: t('.name_placeholder'), class: "form-control" %>
@@ -15,6 +14,14 @@
       <div class="mb-3">
         <%= f.label :email, class: "form-label" %>
         <%= f.email_field :email, placeholder: t('defaults.email_placeholder'), class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :bio, class: "form-label" %>
+        <%= f.text_area :bio, class: "form-control resize" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :avatar, class: "form-label" %>
+        <%= f.file_field :avatar, class: "form-control" %>
       </div>
       <div class="mb-3">
         <%= f.label :password, class: "form-label" %>
@@ -27,10 +34,12 @@
       <div class="mb-4">
         <%= f.submit class: "btn btn-primary w-100" %>
       </div>
-      <div class="mb-4 text-center">
-        <%= link_to t('.to_login_page'), login_path %>
-      </div>
+    </div>
 
-    <% end %>
+  <% end %>
+
+  <div class="text-center">
+    <%= link_to t('.back_to_profile'), profile_path %>
   </div>
+
 </div>

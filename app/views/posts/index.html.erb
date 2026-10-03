@@ -16,16 +16,25 @@
           <article class="card p-1">
             <div class="card-body">
               <div class="d-flex justify-content-between">
-                <h2 class="mb-3">
+                <h2>
                   <%= link_to post.title, post_path(post), class: "text-decoration-none" %>
                 </h2>
                 <div class="text-muted small">
                   <%= time_ago_in_words(post.created_at) %>
                 </div>
               </div>
-              <p class="mb-3 text-muted small">
-                <%= t('defaults.poster') %>: <%= post.user.name %>
-              </p>
+              <div class="d-flex align-items-center mb-3">
+                <%= t('defaults.poster') %>:
+                <% profile_link = post.user == current_user ? profile_path : user_path(post.user) %>
+                <%= link_to profile_link, class: "d-flex align-items-center text-decoration-none" do %>
+                  <% if post.user.avatar.attached? %>
+                    <%= image_tag post.user.avatar, width: 20, height: 20, class: "rounded-circle ms-2" %>
+                  <% end %>
+                  <span class="small ms-1">
+                    <%= post.user.name %>
+                  </span>
+                <% end %>
+              </div>
               <%= truncate(post.body, length: 20) %>
               
               <% if current_user == post.user %>
