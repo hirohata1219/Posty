@@ -10,4 +10,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, length: { minimum: 3 }, if: -> { new_record? || changes[:password_digest] }
   validates :bio, length: { maximum: 200 }
+
+  generates_token_for :password_reset, expires_in: 1.hour do
+    password_digest
+  end
 end

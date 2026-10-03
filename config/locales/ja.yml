@@ -150,16 +150,24 @@ ja:
       success: "プロフィールを更新しました。"
       failure: "プロフィールの更新に失敗しました。"
 
+  password_reset_mailer:
+    reset:
+      subject: "パスワードリセットのご案内"
+
   password_resets:
     new:
-      title: "パスワードリセット申請"
-      submit: "送信"
+      title: "パスワードをお忘れの方"
+      submit: "パスワード再設定メールを送信"
+      to_login_page: "ログインページへ"
     edit:
-      title: "パスワードリセット"
+      title: "パスワード再設定"
+      to_login_page: "ログインページへ"
     create:
-      success: "パスワードリセット手順を送信しました"
+      success: "パスワード再設定の案内をメールアドレス宛に送信しました。"
+      failure: "パスワード再設定リンクが無効、または期限切れです。"
     update:
-      success: "パスワードを変更しました"
+      success: "パスワードを変更しました。新しいパスワードでログインしてください。"
+      failure: "パスワード再設定リンクが無効、または期限切れです。"
 
 
   activerecord:
