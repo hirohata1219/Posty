@@ -15,12 +15,21 @@
           </div>
         </div>
 
-    <p class="mb-3 text-muted small">
-      <%= t('defaults.poster') %>: <%= @post.user.name %>
-    </p>
+    <div class="d-flex align-items-center mb-3">
+      <%= t('defaults.poster') %>:
+      <% profile_link = @post.user == current_user ? profile_path : user_path(@post.user) %>
+      <%= link_to profile_link, class: "d-flex align-items-center text-decoration-none" do %>
+        <% if @post.user.avatar.attached? %>
+          <%= image_tag @post.user.avatar, width: 20, height: 20, class: "rounded-circle ms-2" %>
+        <% end %>
+        <span class="small ms-1">
+          <%= @post.user.name %>
+        </span>
+      <% end %>
+    </div>
 
     <% if @post.image.attached? %>
-      <%= image_tag @post.image, class: "img-fluid rounded objecy-fit-contain mb-3" %>
+      <%= image_tag @post.image, class: "img-fluid rounded objecy-fit-contain my-4" %>
     <% end %>
 
     <%= simple_format(@post.body, class: "mb-0") %>
