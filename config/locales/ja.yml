@@ -161,6 +161,7 @@ ja:
       to_login_page: "ログインページへ"
     edit:
       title: "パスワード再設定"
+      to_login_page: "ログインページへ"
     create:
       success: "パスワード再設定の案内をメールアドレス宛に送信しました。"
       failure: "パスワード再設定リンクが無効、または期限切れです。"

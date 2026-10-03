@@ -1,6 +1,6 @@
 class PasswordResetsController < ApplicationController
   skip_before_action :require_login
-  
+
   def new
   end
 
@@ -13,7 +13,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
-    user = User.find_by_token_for(:password_reset, params[:token])
+    @user = User.find_by_token_for(:password_reset, params[:token])
     unless @user
       redirect_to new_password_reset_path, danger: t('.failure')
     end
