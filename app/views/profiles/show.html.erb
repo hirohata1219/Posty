@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="text-center fw-bold mt-4">
+    <%= t('.title') %>
+  </h1>
+
+  <div class="card col-md-5 mx-auto p-3 my-4">
+    <div class="card-body text-center">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, width: 120, height: 120, class: "rounded-circle object-fit-contain mb-3" %>
+      <% end %>
+      <h2 class="mb-3">
+        <%= @user.name %>
+      </h2>
+      <p class="mb-3">
+        <%= @user.email %>
+      </p>
+      <% if @user.bio.present? %>
+        <p class="mb-5">
+          <%= simple_format(@user.bio) %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+    <div class="text-center mb-4">
+      <%= link_to t('defaults.edit'), edit_profile_path, class: "btn btn-primary" %>
+    </div>
+</div>

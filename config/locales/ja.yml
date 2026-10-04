@@ -6,8 +6,12 @@ ja:
       submit: "保存する"
       post:
         create: "投稿する"
+      comment:
+        create: "コメントする"
 
   defaults:
+    email: "メールアドレス"
+    password: "パスワード"
     post: "投稿"
     poster: "投稿者"
     search_word: "検索ワード"
@@ -27,7 +31,7 @@ ja:
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
-    require_login: "ログインしてください"
+
 
   header:
     login: "ログイン"
@@ -38,6 +42,7 @@ ja:
     create_post: "新規投稿"
     bookmark_index: "ブックマーク一覧"
     profile: "マイページ"
+
 
   users:
     new:
@@ -67,43 +72,7 @@ ja:
     destroy:
       success: "ログアウトしました"
 
-  users:
-    new:
-      title: "ユーザー登録"
-      to_login_page: "ログインページへ"
-      name_placeholder: "（例）山田太郎"
-      password_confirmation_placeholder: "上記パスワードを再入力してください"
-
-    create:
-      success: "ユーザー登録が完了しました"
-      failure: "ユーザー登録に失敗しました"
-
-    update:
-      success: "更新が完了しました"
-      failure: "更新に失敗しました"
-
-    destroy:
-      success: "削除が完了しました"
-
   posts:
-    new:
-      title: "新規投稿"
-      back_to_index: "投稿一覧に戻る"
-
-    show:
-      title: "投稿詳細"
-      created_at: "投稿日"
-      comment: "コメント"
-      comment_submit: "コメントする"
-      comments: "コメント"
-      no_comments: "まだコメントがありません"
-      comment_count: "コメント数"
-      like_count: "いいね数"
-      liked: "♥ いいね済み"
-      like: "♡ いいね"
-      back_to_index: "投稿一覧に戻る"
-      comment_delete_confirm: "コメントを削除しますか？"
-
     index:
       title: "投稿一覧"
       create: "投稿する"
@@ -134,21 +103,28 @@ ja:
       search_placeholder: "投稿を検索"
       search: "検索"
 
-    form:
-      title_placeholder: "タイトル"
-      body_placeholder: "本文"
-      ai_improve: "🤖 AIで文章を改善"
-
-  profiles:
-    edit:
-      ai_improve: "🤖 AIで文章を改善"
-
-  views:
-    pagination:
-      first: "最初"
-      last: "最後"
-      previous: "前へ"
-      next: "次へ"
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: "1秒未満"
+      x_seconds:
+        one: "1秒前"
+        other: "%{count}秒前"
+      x_minutes:
+        one: "1分前"
+        other: "%{count}分前"
+      about_x_hours:
+        one: "1時間前"
+        other: "%{count}時間前"
+      x_days:
+        one: "1日前"
+        other: "%{count}日前"
+      about_x_months:
+        one: "1か月前"
+        other: "%{count}か月前"
+      about_x_years:
+        one: "1年前"
+        other: "%{count}年前"
 
   comments:
     create:
@@ -161,13 +137,20 @@ ja:
     destroy:
       success: "いいねを取り消しました。"
 
-  bookmarks:
-    title: "ブックマーク一覧"
-    no_result: "ブックマーク中の投稿がありません。"
-    create:
-      success: "ブックマークしました"
-    destroy:
-      success: "ブックマークを外しました"
+  profiles:
+    show:
+      title: "プロフィール"
+    edit:
+      title: "プロフィール編集"
+      back_to_profile: "プロフィールに戻る"
+      ai_improve: "🤖 AIで文章を改善"
+    update:
+      success: "プロフィールを更新しました。"
+      failure: "プロフィールの更新に失敗しました。"
+
+  password_reset_mailer:
+    reset:
+      subject: "パスワードリセットのご案内"
 
   password_resets:
     new:
@@ -176,7 +159,8 @@ ja:
     edit:
       title: "パスワード再設定"
     create:
-      success: "パスワードリセット手順を送信しました"
+      success: "パスワード再設定の案内をメールアドレス宛に送信しました。"
+      failure: "パスワード再設定リンクが無効、または期限切れです。"
     update:
       success: "パスワードを変更しました。新しいパスワードでログインしてください。"
       failure: "パスワード再設定リンクが無効、または期限切れです。"
@@ -206,21 +190,19 @@ ja:
         posts: "投稿管理"
 
   activerecord:
+
     attributes:
       user:
         name: "名前"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード確認"
-        age: "年齢"
-        phone_number: "電話番号"
         bio: "自己紹介"
         avatar: "プロフィール画像"
-
       post:
         title: "タイトル"
         body: "本文"
-
+        image: "画像"
       comment:
         body: "コメント"
 
@@ -229,11 +211,9 @@ ja:
         blank: "を入力してください"
         required: "を入力してください"
         too_short: "%{count}文字以上で入力してください"
-        too_long: "%{count}文字以内で入力してください"
         taken: "はすでに使用されています"
         invalid: "は不正な値です"
-        not_a_number: "は数値で入力してください"
-
+        not_number: "は数値で入力してください"
       models:
         user:
           attributes:
