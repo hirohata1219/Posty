@@ -1,0 +1,42 @@
+<div class="container py-4">
+  <h1 class="mb-4 my-md-5 text-center">
+    <%= t('.title') %>
+  </h1>
+
+  <div class="card col-md-6 mx-auto">
+    <div class="card-header">
+      <%= t('admin.shared.post_info') %>
+    </div>
+
+    <div class="card-body">
+      <%= form_with model: [:admin, @post] do |f| %>
+
+        <% render "shared/error_messages", object: @post %>
+
+        <div class="mb-3">
+          <%= f.label :title, t('admin.shared.post_title'), class: "form-label" %>
+          <%= f.text_field :title, required: true, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :body, t('admin.shared.body'), class: "form-label" %>
+          <%= f.text_area :body, rows: 5, required: true, class: "form-control resize" %>
+        </div>
+
+        <div class="mb-4">
+          <%= f.label :image, t('.image'), class: "form-label" %>
+          <%= f.file_field :image, class: "form-control" %>
+        </div>
+
+        <div class="mb-3 text-center">
+          <%= f.submit class: "btn btn-primary" %>
+
+          <%= link_to t('admin.shared.cancel'),
+              admin_post_path(@post),
+              class: "btn btn-secondary" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
