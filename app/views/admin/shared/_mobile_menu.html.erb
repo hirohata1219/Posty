@@ -26,7 +26,7 @@
     </button>
 
     <h5 class="p-4 mx-4 text-center border-bottom" id="adminMenuLabel">
-      <%= t('.title') %>
+      <%= t('admin.shared.title') %>
     </h5>
 
   </div>
@@ -37,19 +37,19 @@
       <ul class="nav flex-column gap-3">
 
         <li class="nav-item">
-          <%= link_to t('.dashboard'),
+          <%= link_to t('admin.shared.dashboard'),
               admin_root_path,
               class: "nav-link text-white" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to t('.users'),
-              admin_root_path,
+          <%= link_to t('admin.shared.users'),
+              admin_users_path,
               class: "nav-link text-white" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to t('.posts'),
+          <%= link_to t('admin.shared.posts'),
               admin_root_path,
               class: "nav-link text-white" %>
         </li>

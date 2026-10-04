@@ -3,26 +3,26 @@
   style="width: 240px;">
 
   <h4 class="pb-3 border-bottom">
-    <%= t('.title') %>
+    <%= t('admin.shared.title') %>
   </h4>
 
   <nav>
     <ul class="nav flex-column py-5 gap-3">
 
       <li class="nav-item">
-        <%= link_to t('.dashboard'),
+        <%= link_to t('admin.shared.dashboard'),
             admin_root_path,
             class: "nav-link text-white" %>
       </li>
 
       <li class="nav-item">
-        <%= link_to t('.users'),
-            admin_root_path,
+        <%= link_to t('admin.shared.users'),
+            admin_users_path,
             class: "nav-link text-white" %>
       </li>
 
       <li class="nav-item">
-        <%= link_to t('.posts'),
+        <%= link_to t('admin.shared.posts'),
             admin_root_path,
             class: "nav-link text-white" %>
       </li>
