@@ -178,16 +178,48 @@ ja:
 
   admin:
     shared:
-      sidebar:
-        title: "管理画面"
-        dashboard: "ダッシュボード"
-        users: "ユーザー管理"
-        posts: "投稿管理"
-      mobile_menu:
-        title: "管理画面"
-        dashboard: "ダッシュボード"
-        users: "ユーザー管理"
-        posts: "投稿管理"
+      title: "管理画面"
+      dashboard: "ダッシュボード"
+      users: "ユーザー管理"
+      posts: "投稿管理"
+      info: "ユーザー情報"
+      id: "ID"
+      name: "名前"
+      email: "メールアドレス"
+      role: "権限"
+      created_at: "登録日"
+      post_title: "タイトル"
+      post_info: "投稿情報"
+      post_id: "投稿ID"
+      body: "本文"
+      post_created_at: "投稿日"
+      cancel: "キャンセル"
+    users:
+      index:
+        title: "ユーザー管理"
+      show:
+        title: "ユーザー詳細"
+        to_admin_users: "一覧に戻る"
+      edit:
+        title: "ユーザー編集"
+        image: "画像"
+      update:
+        success: "ユーザー情報を更新しました。"
+      destroy:
+        success: "ユーザーを削除しました。"
+    posts:
+      index:
+        title: "投稿管理"
+      show:
+        title: "投稿詳細"
+        to_admin_posts: "一覧に戻る"
+      edit:
+        title: "投稿編集"
+      update:
+        success: "投稿を更新しました。"
+      destroy:
+        success: "投稿を削除しました。"
+
 
   activerecord:
 
