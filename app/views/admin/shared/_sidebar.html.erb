@@ -1,0 +1,37 @@
+<aside
+  class="d-none d-md-block bg-dark text-white p-5 text-center"
+  style="width: 240px;">
+
+  <h4 class="pb-3 border-bottom">
+    <%= t('.title') %>
+  </h4>
+
+  <nav>
+    <ul class="nav flex-column py-5 gap-3">
+
+      <li class="nav-item">
+        <%= link_to t('.dashboard'),
+            admin_root_path,
+            class: "nav-link text-white" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to t('.users'),
+            admin_root_path,
+            class: "nav-link text-white" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to t('.posts'),
+            admin_root_path,
+            class: "nav-link text-white" %>
+      </li>
+
+    </ul>
+  </nav>
+
+  <%= link_to t('defaults.to_index'),
+      root_path,
+      class: "btn btn-outline-light btn-sm" %>
+
+</aside>

@@ -1,0 +1,65 @@
+<div class="m-3">
+  <button
+    class="btn btn-dark d-md-none"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#adminMenu"
+    aria-controls="adminMenu">
+    ☰
+  </button>
+</div>
+
+<div
+  class="offcanvas offcanvas-start d-md-none"
+  tabindex="-1"
+  id="adminMenu"
+  aria-labelledby="adminMenuLabel"
+  style="width: 50vw;">
+
+  <div class="bg-dark text-white">
+
+    <button
+      type="button"
+      class="btn-close btn-close-white m-4"
+      data-bs-dismiss="offcanvas"
+      aria-label="閉じる">
+    </button>
+
+    <h5 class="p-4 mx-4 text-center border-bottom" id="adminMenuLabel">
+      <%= t('.title') %>
+    </h5>
+
+  </div>
+
+  <div class="offcanvas-body bg-dark text-white text-center">
+
+    <nav>
+      <ul class="nav flex-column gap-3">
+
+        <li class="nav-item">
+          <%= link_to t('.dashboard'),
+              admin_root_path,
+              class: "nav-link text-white" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to t('.users'),
+              admin_root_path,
+              class: "nav-link text-white" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to t('.posts'),
+              admin_root_path,
+              class: "nav-link text-white" %>
+        </li>
+
+      </ul>
+    </nav>
+
+    <%= link_to t('defaults.to_index'),
+        root_path,
+        class: "btn btn-outline-light btn-sm mt-5" %>
+
+  </div>
+</div>

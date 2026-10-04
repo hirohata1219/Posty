@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get "dashboard/index"
-  end
-  get "password_resets/new"
-  get "password_resets/edit"
-  get "profiles/show"
-  get "profiles/edit"
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "posts#index"
