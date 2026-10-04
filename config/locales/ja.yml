@@ -177,6 +177,10 @@ ja:
       admin_root: "管理画面"
 
   admin:
+    dashboard:
+      index:
+        title: "管理者ダッシュボード"
+        content: "管理者専用ページです"
     shared:
       title: "管理画面"
       dashboard: "ダッシュボード"
