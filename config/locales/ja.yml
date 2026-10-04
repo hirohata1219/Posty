@@ -23,6 +23,8 @@ ja:
     password_placeholder: "3文字以上で入力してください"
     password_confirmation_placeholder: "上記パスワードを再入力してください"
     require_login: "ログインしてください"
+    to_index: "投稿一覧に戻る"
+    to_login: "ログインページへ"
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
@@ -45,7 +47,6 @@ ja:
   users:
     new:
       title: "ユーザー登録"
-      to_login_page: "ログインページへ"
       name_placeholder: "（例）山田太郎"
     create:
       success: "ユーザー登録が完了しました"
@@ -80,13 +81,11 @@ ja:
       search: "検索"
     new:
       title: "新規投稿"
-      back_to_index: "投稿一覧に戻る"
     show:
       title: "投稿詳細"
       created_at: "投稿日"
       no_comments: "まだコメントがありません"
       comment_delete_confirm: "コメントを削除しますか？"
-      back_to_index: "投稿一覧に戻る"
       liked: "♥ いいね済み"
       like: "♡ いいね"
       comment_count: "コメント数"
@@ -103,7 +102,6 @@ ja:
       search_result: "「%{query}」の検索結果"
       search_placeholder: "投稿を検索"
       search: "検索"
-      back_to_index: "投稿一覧に戻る"
 
   datetime:
     distance_in_words:
@@ -158,10 +156,8 @@ ja:
     new:
       title: "パスワードをお忘れの方"
       submit: "パスワード再設定メールを送信"
-      to_login_page: "ログインページへ"
     edit:
       title: "パスワード再設定"
-      to_login_page: "ログインページへ"
     create:
       success: "パスワード再設定の案内をメールアドレス宛に送信しました。"
       failure: "パスワード再設定リンクが無効、または期限切れです。"
@@ -172,6 +168,26 @@ ja:
   user_mailer:
       subject: "ユーザー登録が完了しました"
 
+  applicationController:
+    require_admin:
+      not_admin: "管理者権限が必要です。"
+
+  shared:
+    header:
+      admin_root: "管理画面"
+
+  admin:
+    shared:
+      sidebar:
+        title: "管理画面"
+        dashboard: "ダッシュボード"
+        users: "ユーザー管理"
+        posts: "投稿管理"
+      mobile_menu:
+        title: "管理画面"
+        dashboard: "ダッシュボード"
+        users: "ユーザー管理"
+        posts: "投稿管理"
 
   activerecord:
 
