@@ -15,17 +15,18 @@ ja:
     delete: "削除"
     delete_confirm: "削除しますか？"
     password_reset: "パスワードリセット"
-
     email_placeholder: "（例）taro@example.com"
     password_placeholder: "3文字以上で入力してください"
-
+    password_confirmation_placeholder: "上記パスワードを再入力してください"
+    require_login: "ログインしてください"
+    to_index: "投稿一覧に戻る"
+    to_login: "ログインページへ"
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
-
     require_login: "ログインしてください"
 
   header:
@@ -37,6 +38,21 @@ ja:
     create_post: "新規投稿"
     bookmark_index: "ブックマーク一覧"
     profile: "マイページ"
+
+  users:
+    new:
+      title: "ユーザー登録"
+      name_placeholder: "（例）山田太郎"
+    create:
+      success: "ユーザー登録が完了しました"
+      failure: "ユーザー登録に失敗しました"
+    show:
+      title: "プロフィール"
+    update:
+      success: "更新が完了しました"
+      failure: "更新に失敗しました"
+    destroy:
+      success: "削除が完了しました"
 
   sessions:
     new:
@@ -92,10 +108,31 @@ ja:
       title: "投稿一覧"
       create: "投稿する"
       no_result: "まだ投稿がありません"
-
+      search_placeholder: "投稿を検索"
+      search: "検索"
+    new:
+      title: "新規投稿"
+    show:
+      title: "投稿詳細"
+      created_at: "投稿日"
+      no_comments: "まだコメントがありません"
+      comment_delete_confirm: "コメントを削除しますか？"
+      liked: "♥ いいね済み"
+      like: "♡ いいね"
+      comment_count: "コメント数"
+      like_count: "いいね数"
     edit:
       title: "投稿編集"
       back_to_show: "投稿詳細に戻る"
+    form:
+      ai_improve: "🤖 AIで文章を改善"
+    search:
+      title: "検索結果"
+      blank: "検索キーワードを入力してください。"
+      empty: "「%{query}」に一致する投稿はありません。"
+      search_result: "「%{query}」の検索結果"
+      search_placeholder: "投稿を検索"
+      search: "検索"
 
     form:
       title_placeholder: "タイトル"
@@ -134,14 +171,39 @@ ja:
 
   password_resets:
     new:
-      title: "パスワードリセット申請"
-      submit: "送信"
+      title: "パスワードをお忘れの方"
+      submit: "パスワード再設定メールを送信"
     edit:
-      title: "パスワードリセット"
+      title: "パスワード再設定"
     create:
       success: "パスワードリセット手順を送信しました"
     update:
-      success: "パスワードを変更しました"
+      success: "パスワードを変更しました。新しいパスワードでログインしてください。"
+      failure: "パスワード再設定リンクが無効、または期限切れです。"
+
+  user_mailer:
+      subject: "ユーザー登録が完了しました"
+
+  applicationController:
+    require_admin:
+      not_admin: "管理者権限が必要です。"
+
+  shared:
+    header:
+      admin_root: "管理画面"
+
+  admin:
+    shared:
+      sidebar:
+        title: "管理画面"
+        dashboard: "ダッシュボード"
+        users: "ユーザー管理"
+        posts: "投稿管理"
+      mobile_menu:
+        title: "管理画面"
+        dashboard: "ダッシュボード"
+        users: "ユーザー管理"
+        posts: "投稿管理"
 
   activerecord:
     attributes:

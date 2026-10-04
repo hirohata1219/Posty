@@ -1,0 +1,64 @@
+<div class="col-md-6 mx-auto">
+  <h1 class="text-center fw-bold my-5">
+    <% if @query.blank? %>
+      <%= t('.title') %>
+    <% else %>
+      <%= t('.search_result', query: @query) %>
+    <% end %>
+  </h1>
+  <div class="container">
+    <% if @query.blank? %>
+      <div class="alert alert-warning mb-5">
+        <%= t('.blank') %>
+      </div>
+    <% elsif @posts.empty? %>
+      <div class="alert alert-danger mb-5">
+        <%= t('.empty', query: @query) %>
+      </div>
+    <% end %>
+    
+    <div class="container mb-5">
+      <%= form_with url: search_posts_path, method: :get, local: true, class: "d-flex" do |f| %>
+        <%= f.search_field :q, value: @query, class: "form-control", placeholder: t('.search_placeholder') %>
+        <%= f.submit t('.search'), class: "btn btn-outline-primary" %>
+      <% end %>
+    </div>
+
+    <% if @query.present? && @posts.present? %>
+      <div class="posts-grid my-3">
+        <% @posts.each do |post| %>
+          <article class="card p-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <h2 class="mb-3">
+                  <%= link_to post.title, post_path(post), class: "fw-bold text-decoration-none" %>
+                </h2>
+                <%= post.created_at.strftime("%Y/%m/%d") %>
+              </div>
+              <p class="small text-muted mb-3">
+                <%= t('defaults.poster') %>: <%= post.user.name %>
+              </p>
+              <div class="mb-4">
+                <%= truncate(post.body, length: 20) %>
+              </div>
+              <% if current_user == post.user %>
+                <div class="d-flex gap-3">
+                  <%= link_to t('defaults.edit'), edit_post_path(post), class: "btn btn-outline-warning btn-sm" %>
+                  <%= button_to t('defaults.delete'), post_path(post), class: "btn btn-outline-danger btn-sm",
+                      method: :delete, data: { turbo_confirm: t('defaults.delete_confirm') } %>
+                </div>
+              <% end %>
+            </div>
+          </article>
+        <% end %>
+      </div>
+      <div class="my-4 py-md-4">
+        <%== @pagy.series_nav %>
+      </div>
+    <% else %>
+      <p class="mb-5 py-3 text-center">
+        <%= link_to t("defaults.to_index"), posts_path %>
+      </p>
+    <% end %>
+  </div>
+</div>

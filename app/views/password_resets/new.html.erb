@@ -1,0 +1,25 @@
+<div class="col-md-5 mx-auto py-5">
+  <div class="container">
+    <h1 class="text-center fw-bold mb-5">
+      <%= t('.title') %>
+    </h1>
+
+    <%= form_with url: password_reset_path, method: :post do |f| %>
+
+      <div class="mb-4">
+        <%= f.label :email, t('defaults.email'), class: "form-label" %>
+        <%= f.email_field :email, placeholder: t('defaults.email_placeholder'), class: "form-control",
+            required: true, autocomplete: "email" %>
+      </div>
+      <div class="mb-5">
+        <%= f.submit t('.submit'), class: "btn btn-primary w-100" %>
+      </div>
+
+    <% end %>
+
+    <div class="mb-2 text-center">
+      <%= link_to t('defaults.to_login'), login_path %>
+    </div>
+
+  </div>
+</div>
