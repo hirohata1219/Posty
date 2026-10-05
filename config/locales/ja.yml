@@ -105,11 +105,9 @@ ja:
 
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "1秒未満"
-      x_seconds:
-        one: "1秒前"
-        other: "%{count}秒前"
+      less_than_x_minutes:
+        one: "1分未満"
+        other: "%{count}分未満"
       x_minutes:
         one: "1分前"
         other: "%{count}分前"
