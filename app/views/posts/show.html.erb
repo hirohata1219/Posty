@@ -29,7 +29,7 @@
     </div>
 
     <% if @post.image.attached? %>
-      <%= image_tag @post.image, class: "img-fluid rounded objecy-fit-contain my-4" %>
+      <%= image_tag @post.image, class: "img-fluid rounded object-fit-contain my-4" %>
     <% end %>
 
     <%= simple_format(@post.body, class: "mb-0") %>
@@ -81,9 +81,14 @@
   <% @comments.each do |comment| %>
     <div class="border rounded my-3 p-3">
       <div class="d-flex justify-content-between">
-        <p class="mb-3">
-          <%= comment.user.name %>
-        </p>
+        <div class="d-flex">
+          <% if comment.user.avatar.attached? %>
+            <%= image_tag comment.user.avatar, width: 20, height: 20, class: "rounded-circle me-1" %>
+          <% end %>
+          <p class="mb-3">
+            <%= comment.user.name %>
+          </p>
+        </div>
         <p class="text-muted">
           <%= time_ago_in_words(comment.created_at) %>
         </p>

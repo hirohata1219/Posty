@@ -17,7 +17,11 @@
         <% @posts.each do |post| %>
           <tr>
             <td><%= post.id %></td>
-            <td><%= post.user.name %></td>
+            <td>
+              <% if post.user.avatar.attached? %>
+                <%= image_tag post.user.avatar, width: 20, height: 20, class: "rounded-circle mb-1" %>
+              <% end %>
+              <%= post.user.name %></td>
             <td><%= link_to post.title, admin_post_path(post), class: "text-decoration-none" %></td>
           </tr>
         <% end %>

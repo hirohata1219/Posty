@@ -17,7 +17,14 @@
         <% @users.each do |user| %>
           <tr>
             <td><%= user.id %></td>
-            <td><%= link_to user.name, admin_user_path(user) %></td>
+            <td>
+              <%= link_to admin_user_path(user), class: "text-decoration-none" do %>
+                <% if user.avatar.attached? %>
+                  <%= image_tag user.avatar, width: 20, height: 20, class: "rounded-circle mb-1" %>
+                <% end %>
+                <%= user.name %>
+              <% end %>
+            </td>
             <td><%= user.role %></td>
           </tr>
         <% end %>

@@ -14,7 +14,11 @@
         <dd class="col-sm-9"><%= @user.id %></dd>
 
         <dt class="col-sm-3"><%= t('admin.shared.name') %></dt>
-        <dd class="col-sm-9"><%= @user.name %></dd>
+        <dd class="col-sm-9 d-flex align-items-center">
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar, width: 20, height: 20, class: "rounded-circle me-2" %>
+          <% end %>
+          <%= @user.name %></dd>
 
         <dt class="col-sm-3"><%= t('admin.shared.email') %></dt>
         <dd class="col-sm-9"><%= @user.email %></dd>
