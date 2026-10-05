@@ -19,17 +19,9 @@
         <%= f.label :bio, class: "form-label" %>
         <%= f.text_area :bio, class: "form-control resize" %>
       </div>
-      <div class="mb-3">
+      <div class="mb-5">
         <%= f.label :avatar, class: "form-label" %>
         <%= f.file_field :avatar, class: "form-control" %>
-      </div>
-      <div class="mb-3">
-        <%= f.label :password, class: "form-label" %>
-        <%= f.password_field :password, placeholder: t('defaults.password_placeholder'), class: "form-control" %>
-      </div>
-      <div class="mb-4">
-        <%= f.label :password_confirmation, class: "form-label" %>
-        <%= f.password_field :password_confirmation, placeholder: t('defaults.password_confirmation_placeholder'), class: "form-control" %>
       </div>
       <div class="mb-4">
         <%= f.submit class: "btn btn-primary w-100" %>
