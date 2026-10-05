@@ -29,8 +29,8 @@ RUN mkdir -p /bundle && \
     chown -R appuser:appgroup /bundle
 
 # 以降はappuserで実行
-USER appuser
+USER root
 
 EXPOSE 3000
 
-CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+CMD ["sh", "-c", "chown -R appuser:appgroup /app/storage && exec su appuser -c 'bin/rails server -b 0.0.0.0'"]
