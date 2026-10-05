@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
-    @users = User.order(created_at: :desc)
+    @pagy, @users = pagy(:offset, User.order(created_at: :desc), limit: 10)
   end
 
   def show

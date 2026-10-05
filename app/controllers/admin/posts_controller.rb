@@ -2,7 +2,7 @@ class Admin::PostsController < Admin::BaseController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.includes(:user).order(created_at: :desc)
+    @pagy, @posts = pagy(:offset, Post.includes(:user).order(created_at: :desc), limit: 8)
   end
 
   def show
