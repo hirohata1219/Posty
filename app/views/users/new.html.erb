@@ -1,4 +1,4 @@
-<div class="col-md-5 mx-auto pt-5">
+<div data-controller="password-generator" class="col-md-5 mx-auto pt-5">
   <div class="container">
     <h1 class="text-center fw-bold mb-4">
       <%= t('.title') %>
@@ -18,12 +18,19 @@
       </div>
       <div class="mb-3">
         <%= f.label :password, class: "form-label" %>
-        <%= f.password_field :password, placeholder: t('defaults.password_placeholder'), class: "form-control" %>
+        <%= f.password_field :password, placeholder: t('defaults.password_placeholder'), class: "form-control",
+            data: { password_generator_target: "password" } %>
       </div>
       <div class="mb-4">
         <%= f.label :password_confirmation, class: "form-label" %>
-        <%= f.password_field :password_confirmation, placeholder: t('defaults.password_confirmation_placeholder'), class: "form-control" %>
+        <%= f.password_field :password_confirmation, placeholder: t('defaults.password_confirmation_placeholder'),
+            class: "form-control", data: { password_generator_target: "passwordConfirmation" } %>
       </div>
+      <button type="button"
+              class="btn btn-outline-secondary"
+              data-action="click->password-generator#generate">
+        ランダムパスワード生成
+      </button>
       <div class="mb-4">
         <%= f.submit class: "btn btn-primary w-100" %>
       </div>
