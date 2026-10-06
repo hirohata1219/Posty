@@ -48,6 +48,8 @@ ja:
     new:
       title: "ユーザー登録"
       name_placeholder: "（例）山田太郎"
+      random: "強力なパスワードを自動で生成"
+      watch: "表示"
     create:
       success: "ユーザー登録が完了しました"
       failure: "ユーザー登録に失敗しました"
@@ -156,6 +158,8 @@ ja:
       submit: "パスワード再設定メールを送信"
     edit:
       title: "パスワード再設定"
+      random: "強力なパスワードを自動で生成"
+      watch: "表示"
     create:
       success: "パスワード再設定の案内をメールアドレス宛に送信しました。"
       failure: "パスワード再設定リンクが無効、または期限切れです。"

@@ -12,29 +12,49 @@
         <%= f.label :name, class: "form-label" %>
         <%= f.text_field :name, placeholder: t('.name_placeholder'), class: "form-control" %>
       </div>
+
       <div class="mb-3">
         <%= f.label :email, class: "form-label" %>
         <%= f.email_field :email, placeholder: t('defaults.email_placeholder'), class: "form-control" %>
       </div>
+
       <div class="mb-3">
         <%= f.label :password, class: "form-label" %>
-        <%= f.password_field :password, placeholder: t('defaults.password_placeholder'), class: "form-control",
-            data: { password_generator_target: "password" } %>
+
+        <div class="input-group">
+          <%= f.password_field :password, placeholder: t('defaults.password_placeholder'), class: "form-control",
+              data: { password_generator_target: "password" } %>
+          <button type="button" class="btn btn-outline-secondary rounded" data-action="click->password-generator#togglePassword">
+            <%= t('.watch') %>
+          </button>
+        </div>
       </div>
-      <div class="mb-4">
+
+      <div class="mb-3">
         <%= f.label :password_confirmation, class: "form-label" %>
-        <%= f.password_field :password_confirmation, placeholder: t('defaults.password_confirmation_placeholder'),
-            class: "form-control", data: { password_generator_target: "passwordConfirmation" } %>
+        
+        <div class="input-group">
+          <%= f.password_field :password_confirmation, placeholder: t('defaults.password_confirmation_placeholder'),
+              class: "form-control", data: { password_generator_target: "passwordConfirmation" } %>
+          <button type="button" class="btn btn-outline-secondary rounded"
+              data-action="click->password-generator#togglePasswordConfirmation">
+            <%= t('.watch') %>
+          </button>
+        </div>
       </div>
-      <button type="button"
-              class="btn btn-outline-secondary"
-              data-action="click->password-generator#generate">
-        ランダムパスワード生成
-      </button>
-      <div class="mb-4">
+
+      <div class="text-center mb-3">
+        <button type="button"
+                class="btn btn-outline-secondary mb-4"
+                data-action="click->password-generator#generate">
+          <%= t('.random') %>
+        </button>
+      </div>
+      
+      <div class="mb-5">
         <%= f.submit class: "btn btn-primary w-100" %>
       </div>
-      <div class="mb-4 text-center">
+      <div class="mb-5 text-center">
         <%= link_to t('defaults.to_login'), login_path %>
       </div>
 

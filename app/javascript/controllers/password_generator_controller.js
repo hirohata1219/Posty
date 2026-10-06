@@ -24,4 +24,21 @@ export default class extends Controller {
     this.passwordTarget.value = password
     this.passwordConfirmationTarget.value = password
   }
+
+    // パスワードを表示・非表示
+  togglePassword() {
+    if (this.passwordTarget.type === "password") {
+      this.passwordTarget.type = "text"
+    } else {
+      this.passwordTarget.type = "password"
+    }
+  }
+
+  togglePasswordConfirmation() {
+    if (this.passwordConfirmationTarget.type === "password") {
+      this.passwordConfirmationTarget.type = "text"
+    } else {
+      this.passwordConfirmationTarget.type = "password"
+    }
+  }
 }
