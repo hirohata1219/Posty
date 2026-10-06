@@ -1,4 +1,4 @@
-<div class="col-md-5 mx-auto py-5">
+<div data-controller="password-generator" class="col-md-5 mx-auto py-5">
   <div class="container">
     <h1 class="text-center fw-bold mb-5">
       <%= t('.title') %>
@@ -10,14 +10,36 @@
 
       <div class="mb-3">
         <%= f.label :password, class: "form-label" %>
-        <%= f.password_field :password, placeholder: t('defaults.password_placeholder'),
-            class: "form-control", required: true, autocomplete: "new-password" %>
+        <div class="input-group">
+          <%= f.password_field :password, placeholder: t('defaults.password_placeholder'), class: "form-control",
+              required: true, autocomplete: "new-password", data: { password_generator_target: "password" } %>
+          <button type="button" class="btn btn-outline-secondary rounded"
+              data-action="click->password-generator#togglePassword">
+            <%= t('.watch') %>
+          </button>
+        </div>
       </div>
-      <div class="mb-5">
+
+      <div class="mb-3">
         <%= f.label :password_confirmation, class: "form-label" %>
-        <%= f.password_field :password_confirmation, placeholder: t('defaults.password_confirmation_placeholder'),
-            class: "form-control", required: true, autocomplete: "new-password" %>
+        <div class="input-group">
+          <%= f.password_field :password_confirmation, placeholder: t('defaults.password_confirmation_placeholder'), class: "form-control",
+              required: true, autocomplete: "new-password", data: { password_generator_target: "passwordConfirmation" } %>
+          <button type="button" class="btn btn-outline-secondary rounded"
+              data-action="click->password-generator#togglePasswordConfirmation">
+            <%= t('.watch') %>
+          </button>
+        </div>
       </div>
+
+      <div class="text-center mb-3">
+        <button type="button"
+                class="btn btn-outline-secondary mb-4"
+                data-action="click->password-generator#generate">
+          <%= t('.random') %>
+        </button>
+      </div>
+
       <div class="mb-5">
         <%= f.submit class: "btn btn-primary w-100" %>
       </div>
