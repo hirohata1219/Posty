@@ -31,6 +31,6 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def post_params
-    params.expect(post: [:title, :body, :image])
+    params.expect(post: [ :title, :body, :image ])
   end
 end

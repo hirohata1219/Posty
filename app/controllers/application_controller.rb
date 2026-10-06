@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     unless current_user&.admin?
-    redirect_to root_path, danger: t('.not_admin')
+    redirect_to root_path, danger: t(".not_admin")
     end
   end
 end

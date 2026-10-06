@@ -13,7 +13,7 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), success: t('.success')
+      redirect_to admin_user_path(@user), success: t(".success")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -21,7 +21,7 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
     @user.destroy
-    redirect_to admin_users_path, status: :see_other, success: t('.success')
+    redirect_to admin_users_path, status: :see_other, success: t(".success")
   end
 
   private
@@ -31,6 +31,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def user_params
-    params.expect(user: [:role])
+    params.expect(user: [ :role ])
   end
 end

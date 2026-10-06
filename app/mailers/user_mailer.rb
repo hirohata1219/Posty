@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: t('.subject')
+      subject: t(".subject")
     )
   end
 end
