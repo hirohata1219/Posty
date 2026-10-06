@@ -30,4 +30,6 @@ Rails.application.routes.draw do
     resources :users
     resources :posts
   end
+
+  post "ai/improve_post", to: "ai#improve_post"
 end
