@@ -209,6 +209,9 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.4-x86_64-linux-musl)
       racc (~> 1.4)
+    openai (0.99.0)
+      connection_pool (>= 2.2.3)
+      logger
     ostruct (0.6.3)
     pagy (43.6.3)
       json
@@ -411,6 +414,7 @@ DEPENDENCIES
   jbuilder
   json (~> 2.21)
   kamal
+  openai
   pagy
   pg (~> 1.1)
   propshaft

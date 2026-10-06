@@ -8,25 +8,38 @@
       <%= t('admin.shared.post_info') %>
     </div>
 
-    <div class="card-body">
+    <div data-controller="ai-post" class="card-body">
       <%= form_with model: [:admin, @post] do |f| %>
 
         <% render "shared/error_messages", object: @post %>
 
         <div class="mb-3">
-          <%= f.label :title, t('admin.shared.post_title'), class: "form-label" %>
+          <%= f.label :title, class: "form-label" %>
           <%= f.text_field :title, required: true, class: "form-control" %>
         </div>
 
         <div class="mb-3">
-          <%= f.label :body, t('admin.shared.body'), class: "form-label" %>
-          <%= f.text_area :body, rows: 5, required: true, class: "form-control resize" %>
+          <%= f.label :image, class: "form-label" %>
+          <%= f.file_field :image, class: "form-control" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :image, t('.image'), class: "form-label" %>
-          <%= f.file_field :image, class: "form-control" %>
+          <%= f.label :body, class: "form-label" %>
+          <%= f.text_area :body, rows: 5, required: true, class: "form-control resize", data: { ai_post_target: "body" } %>
         </div>
+
+        <div class="mb-3 text-center">
+          <button type="button"
+                  data-action="click->ai-post#improve"
+                  data-ai-post-target="button"
+                  class="btn btn-outline-success">
+            <%= t('.ai_improve') %>
+          </button>
+        </div>
+        <div class="mb-4 text-center">
+          <span data-ai-post-target="status"></span>
+        </div>
+
 
         <div class="mb-3 text-center">
           <%= f.submit class: "btn btn-primary" %>

@@ -193,7 +193,6 @@ ja:
       post_title: "タイトル"
       post_info: "投稿情報"
       post_id: "投稿ID"
-      body: "本文"
       post_created_at: "投稿日"
       cancel: "キャンセル"
     users:
@@ -204,7 +203,6 @@ ja:
         to_admin_users: "一覧に戻る"
       edit:
         title: "ユーザー編集"
-        image: "画像"
       update:
         success: "ユーザー情報を更新しました。"
       destroy:
@@ -217,6 +215,7 @@ ja:
         to_admin_posts: "一覧に戻る"
       edit:
         title: "投稿編集"
+        ai_improve: "🤖 AIで文章を改善"
       update:
         success: "投稿を更新しました。"
       destroy:

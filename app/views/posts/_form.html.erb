@@ -1,4 +1,5 @@
-<%= render "shared/error_messages", object: @post %>
+<div data-controller="ai-post">
+  <%= render "shared/error_messages", object: @post %>
 
   <%= form_with model: @post do |f| %>
     <div class="p-3">
@@ -7,12 +8,23 @@
         <%= f.text_field :title, class: "form-control" %>
       </div>
       <div class="mb-3">
-        <%= f.label :body, class: "form-label" %>
-        <%= f.text_area :body, rows: 4, class: "form-control resize" %>
-      </div>
-      <div class="mb-5">
         <%= f.label :image, class: "form-label" %>
         <%= f.file_field :image, class: "form-control" %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :body, class: "form-label" %>
+        <%= f.text_area :body, rows: 4, class: "form-control resize", data: { ai_post_target: "body" } %>
+      </div>
+      <div class="mb-3 text-center">
+        <button type="button"
+                data-action="click->ai-post#improve"
+                data-ai-post-target="button"
+                class="btn btn-outline-success">
+          <%= t('.ai_improve') %>
+        </button>
+      </div>
+      <div class="mb-5 text-center">
+        <span data-ai-post-target="status"></span>
       </div>
 
       <div class="mb-4">
@@ -21,3 +33,4 @@
     </div>
 
   <% end %>
+</div>
