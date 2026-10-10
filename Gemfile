@@ -72,3 +72,4 @@ end
 gem "json", "~> 2.21"
 gem "pagy"
 gem "openai"
+gem "cloudinary"
