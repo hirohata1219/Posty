@@ -1,3 +1,24 @@
+#!/usr/bin/env bash
+set -e
+
+echo "==> Running primary migrations..."
+bundle exec rails db:migrate
+
+echo "==> Preparing Solid Cache..."
+if ! bundle exec rails runner 'exit SolidCache::Entry.table_exists? ? 0 : 1'; then
+  DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:schema:load:cache
+fi
+
+echo "==> Preparing Solid Queue..."
+if ! bundle exec rails runner 'exit SolidQueue::Job.table_exists? ? 0 : 1'; then
+  DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:schema:load:queue
+fi
+
+echo "==> Preparing Solid Cable..."
+if ! bundle exec rails runner 'exit SolidCable::Message.table_exists? ? 0 : 1'; then
+  DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:schema:load:cable
+fi
+
 echo "==> Preparing admin..."
 
 if [ -n "$ADMIN_EMAIL" ]; then
@@ -9,5 +30,4 @@ if [ -n "$ADMIN_EMAIL" ]; then
 fi
 
 echo "==> Starting Rails..."
-
 exec bundle exec rails server -b 0.0.0.0 -p "${PORT:-3000}"
