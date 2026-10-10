@@ -1,18 +1,26 @@
 <div class="container">
-  <div class="card col-md-5 mx-auto p-3 my-5">
-    <h1 class="text-center fw-bold my-4">
-      <%= t('.title') %>
+    <h1 class="text-center fw-bold mt-5">
+      <%= t('.title', name: @user.name) %>
     </h1>
 
-    <div class="card-body text-center">
-    
-      <div class="mb-3">
-        <%= @user.name %>
+  <div class="card col-md-5 mx-auto p-3 my-5">
+    <div class="col-md-5 mx-auto my-4">
+      <div class="text-center">
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar, width: 120, height: 120, class: "rounded-circle object-fit-contain mb-3" %>
+        <% end %>
+        <h2 class="mb-3">
+          <%= @user.name %>
+        </h2>
+        <p class="mb-3">
+          <%= @user.email %>
+        </p>
+        <% if @user.bio.present? %>
+          <p class="mb-3">
+            <%= simple_format(@user.bio) %>
+          </p>
+        <% end %>
       </div>
-      <p class="mb-3">
-        <%= @user.email %>
-      </p>
-
     </div>
   </div>
 </div>

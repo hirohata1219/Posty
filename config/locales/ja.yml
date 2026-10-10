@@ -54,7 +54,7 @@ ja:
       success: "ユーザー登録が完了しました"
       failure: "ユーザー登録に失敗しました"
     show:
-      title: "プロフィール"
+      title: "%{name}さんのプロフィール"
     update:
       success: "更新が完了しました"
       failure: "更新に失敗しました"
@@ -139,14 +139,14 @@ ja:
 
   profiles:
     show:
-      title: "プロフィール"
+      title: "マイページ"
     edit:
-      title: "プロフィール編集"
-      back_to_profile: "プロフィールに戻る"
+      title: "マイページ編集"
+      back_to_profile: "マイページに戻る"
       ai_improve: "🤖 AIで文章を改善"
     update:
-      success: "プロフィールを更新しました。"
-      failure: "プロフィールの更新に失敗しました。"
+      success: "マイページを更新しました。"
+      failure: "マイページの更新に失敗しました。"
 
   password_reset_mailer:
     reset:
