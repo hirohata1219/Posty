@@ -19,15 +19,5 @@ if ! bundle exec rails runner 'exit SolidCable::Message.table_exists? ? 0 : 1'; 
   DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:schema:load:cable
 fi
 
-echo "==> Preparing admin..."
-
-if [ -n "$ADMIN_EMAIL" ]; then
-  bundle exec rails runner '
-    user = User.find_by!(email: ENV["ADMIN_EMAIL"])
-    user.update!(role: :admin)
-    puts "Admin role assigned to #{user.email}"
-  '
-fi
-
 echo "==> Starting Rails..."
 exec bundle exec rails server -b 0.0.0.0 -p "${PORT:-3000}"
