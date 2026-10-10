@@ -21,6 +21,11 @@
       </div>
       <div class="mb-5">
         <%= f.label :avatar, class: "form-label" %>
+        <div class="mb-2">
+          <% if @user.avatar.attached? %>
+            <span class="text-muted small">現在のファイル：<%= @user.avatar.filename %></span>
+          <% end %>
+        </div>
         <%= f.file_field :avatar, class: "form-control" %>
       </div>
       <div class="mb-4">
