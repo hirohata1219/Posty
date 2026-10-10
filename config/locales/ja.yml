@@ -142,6 +142,7 @@ ja:
       title: "マイページ"
     edit:
       title: "マイページ編集"
+      name_placeholder: "（例）山田太郎"
       back_to_profile: "マイページに戻る"
       ai_improve: "🤖 AIで文章を改善"
     update:
