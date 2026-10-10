@@ -1,0 +1,34 @@
+FROM ruby:3.4.10-slim
+
+# 本番環境に必要なパッケージ
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      build-essential \
+      libpq-dev \
+      libyaml-dev \
+      pkg-config \
+      curl \
+      libvips \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Bundler
+ENV BUNDLE_PATH=/bundle \
+    RAILS_ENV=production \
+    RAILS_SERVE_STATIC_FILES=true
+
+# Gemfileを先にコピーしてbundle installをキャッシュ
+COPY Gemfile Gemfile.lock ./
+
+RUN bundle install
+
+# アプリケーション本体
+COPY . .
+
+# Railsのアセットをビルド
+RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+
+EXPOSE 3000
+
+CMD ["sh", "-c", "bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0 -p ${PORT:-3000}"]
