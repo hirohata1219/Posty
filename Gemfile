@@ -69,7 +69,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-gem "json", "~> 2.21"
+gem "json", "~> 3.0"
 gem "pagy"
 gem "openai"
 gem "cloudinary"
