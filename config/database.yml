@@ -1,22 +1,53 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  username: <%= ENV.fetch("DATABASE_USERNAME", "postgres") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
 
 development:
-  <<: *default
-  host: <%= ENV.fetch("DATABASE_HOST", "db") %>
-  username: <%= ENV.fetch("DATABASE_USERNAME", "postgres") %>
-  password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
-  database: Posty_development
+  primary: &primary_development
+    <<: *default
+    host: <%= ENV.fetch("DATABASE_HOST", "db") %>
+    database: Posty_development
+
+  cache:
+    <<: *primary_development
+    database: Posty_development_cache
+    migrations_paths: db/cache_migrate
+
+  queue:
+    <<: *primary_development
+    database: Posty_development_queue
+    migrations_paths: db/queue_migrate
+
+  cable:
+    <<: *primary_development
+    database: Posty_development_cable
+    migrations_paths: db/cable_migrate
 
 test:
-  <<: *default
-  host: <%= ENV.fetch("DATABASE_HOST", "db") %>
-  username: <%= ENV.fetch("DATABASE_USERNAME", "postgres") %>
-  password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
-  database: Posty_test
+  primary:
+    <<: *default
+    host: <%= ENV.fetch("DATABASE_HOST", "db") %>
+    database: Posty_test
 
 production:
-  <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  primary: &primary_production
+    <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
+
+  cache:
+    <<: *primary_production
+    url: <%= ENV["DATABASE_URL"] %>
+    migrations_paths: db/cache_migrate
+
+  queue:
+    <<: *primary_production
+    url: <%= ENV["DATABASE_URL"] %>
+    migrations_paths: db/queue_migrate
+
+  cable:
+    <<: *primary_production
+    url: <%= ENV["DATABASE_URL"] %>
+    migrations_paths: db/cable_migrate
+    
