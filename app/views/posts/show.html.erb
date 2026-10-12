@@ -29,7 +29,7 @@
     </div>
 
     <% if @post.image.attached? %>
-      <%= image_tag @post.image, class: "img-fluid rounded object-fit-contain my-4" %>
+      <%= image_tag @post.image, class: "post-image rounded object-fit-contain my-4" %>
     <% end %>
 
     <%= simple_format(@post.body, class: "mb-0") %>

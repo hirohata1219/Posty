@@ -30,6 +30,22 @@
   }
 }
 
+.post-image {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* スマホ対応 */
+@media (max-width: 576px) {
+  .post-image {
+    max-width: 100%;
+  }
+}
+
 
 .pagy.series-nav {
   display: flex;
