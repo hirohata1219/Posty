@@ -32,6 +32,9 @@ jobs:
           echo "PostgreSQL failed to start"
           exit 1
 
+      - name: Install gems
+        run: docker compose run --rm web bundle install
+
       - name: Prepare test database
         run: docker compose run --rm -e RAILS_ENV=test web bundle exec rails db:prepare
 
