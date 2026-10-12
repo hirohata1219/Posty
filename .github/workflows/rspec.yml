@@ -1,0 +1,43 @@
+name: RSpec
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create CI environment file
+        run: touch .env
+
+      - name: Build Docker image
+        run: docker compose build web
+
+      - name: Start PostgreSQL
+        run: docker compose up -d db
+
+      - name: Wait for PostgreSQL
+        run: |
+          for i in $(seq 1 30); do
+            if docker compose exec -T db pg_isready -U postgres; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "PostgreSQL failed to start"
+          exit 1
+
+      - name: Prepare test database
+        run: docker compose run --rm -e RAILS_ENV=test web bundle exec rails db:prepare
+
+      - name: Run RSpec
+        run: docker compose run --rm -e RAILS_ENV=test web bundle exec rspec
+
+      - name: Stop containers
+        if: always()
+        run: docker compose down
