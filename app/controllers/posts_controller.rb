@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
+  skip_before_action :require_login, only: %i[index]
   before_action :set_post, only: %i[edit update destroy]
+
   def index
     @pagy, @posts = pagy(:offset, Post.includes(:user).order(created_at: :desc), limit: 10)
   end
