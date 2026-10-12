@@ -8,7 +8,14 @@
         <%= f.text_field :title, class: "form-control" %>
       </div>
       <div class="mb-3">
-        <%= f.label :image, class: "form-label" %>
+        <%= f.label :image, class: "form-label mb-0" %>
+        <div class="mb-2">
+          <% if @post.image.attached? %>
+            <span class="text-muted small">
+              <%= t('.present_image') %>：<%= @post.image.filename %>
+            </span>
+          <% end %>
+        </div>
         <%= f.file_field :image, class: "form-control" %>
       </div>
       <div class="mb-4">
