@@ -16,17 +16,30 @@
         <%= f.email_field :email, placeholder: t('defaults.email_placeholder'), class: "form-control" %>
       </div>
       <div class="mb-3">
-        <%= f.label :bio, class: "form-label" %>
-        <%= f.text_area :bio, class: "form-control resize" %>
-      </div>
-      <div class="mb-5">
-        <%= f.label :avatar, class: "form-label" %>
+        <%= f.label :avatar, class: "form-label mb-0" %>
         <div class="mb-2">
           <% if @user.avatar.attached? %>
-            <span class="text-muted small">現在のファイル：<%= @user.avatar.filename %></span>
+            <span class="text-muted small">
+              <%= t('.present_avatar') %>：<%= @user.avatar.filename %>
+            </span>
           <% end %>
         </div>
         <%= f.file_field :avatar, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :bio, class: "form-label" %>
+        <%= f.text_area :bio, class: "form-control resize" %>
+      </div>
+      <div class="mb-3 text-center">
+        <button type="button"
+                data-action="click->ai-post#improve"
+                data-ai-post-target="button"
+                class="btn btn-outline-success">
+          <%= t('.ai_improve') %>
+        </button>
+      </div>
+      <div class="mb-5 text-center">
+        <span data-ai-post-target="status"></span>
       </div>
       <div class="mb-4">
         <%= f.submit class: "btn btn-primary w-100" %>
