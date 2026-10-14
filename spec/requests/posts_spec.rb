@@ -30,24 +30,24 @@ RSpec.describe "Posts", type: :request do
 
         expect(response).to redirect_to(post_path(Post.last))
       end
-      
+
       it "titleが空なら投稿できない" do
         expect {
           post posts_path, params: {
             post: valid_post_attributes.merge(title: "")
           }
         }.not_to change(Post, :count)
-        
+
         expect(response).to have_http_status(:unprocessable_content)
       end
-      
+
       it "bodyが空なら投稿できない" do
         expect {
           post posts_path, params: {
             post: valid_post_attributes.merge(body: "")
           }
         }.not_to change(Post, :count)
-        
+
         expect(response).to have_http_status(:unprocessable_content)
       end
     end
